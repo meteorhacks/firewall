@@ -1,4 +1,10 @@
-# Sikka - A Firewall for Meteor Apps [![Build Status](https://travis-ci.org/meteorhacks/sikka.svg?branch=master)](https://travis-ci.org/meteorhacks/sikka)
+# Sikka-CM - A Firewall for Meteor Apps
+
+Seems like that the [original project](https://github.com/meteorhacks/sikka) from Meteorhacks has been abandoned and is not accepting new issues or PRs.
+So for this reason here is the CM (Community Maintained) version.
+
+
+If the original owners of the project decide to re mantein the project, feel free to merge this project.
 
 This is an application level firewall for Meteor. Sikka can detect malicious users of your app and block those users. 
 We've build **basic rate limiting** support and it is well tested and works with most of the Meteor deployments techniques. We also have a huge roadmap and a feature set.
@@ -8,8 +14,28 @@ We've build **basic rate limiting** support and it is well tested and works with
 ## Installation
 
 ~~~
-meteor add meteorhacks:sikka
+meteor add xunga:sikka-cm
 ~~~
+
+In this new version is mandatory to add a Google's Recapatcha ```siteKey``` and ```secret``` into your settings.json
+
+```
+{
+    "sikka": {
+         "captcha": {
+             "siteKey": "your_new_site_key",
+             "secret":  "your_new_secret_key"
+         }
+    }
+}
+```
+
+> You can get the key in the [Google's Recaptcha](https://www.google.com/recaptcha/intro/index.html) website to get Captcha keys for your domain. 
+
+You can apply the settings with:
+
+` meteor --settings path/to/settings.json`
+
 
 Sikka comes with sufficient set of defaults, which is okay for a common Meteor app. But, it's better if you can tweak them for your needs. Refer following section for that.
 
@@ -45,26 +71,7 @@ Here are some parameters you can configure
 |Per Human Rate Limit (per sec) | `SIKKA_PER_HUMAN_MAX_RPS` | `sikka.rateLimits.perHuman` | IP Rate Limit |
 |Millis Human Lifetime (expired after that) | `SIKKA_HUMAN_LIVES_UPTO_MILLIS` | `sikka.times.humanLivesUpto` | 3600000 |
 
-Here is an example of a settings.json file:
 
-```
-{
-    "sikka": {
-         "captcha": {
-             "siteKey": "your_new_site_key",
-             "secret":  "your_new_secret_key"
-         }
-    }
-}
-```
-
-You can apply the settings with:
-
-` meteor --settings path/to/settings.json`
-
-
-> Visit [Google's Recaptcha](https://www.google.com/recaptcha/intro/index.html) website to get Captcha keys for your domain. We've added a default set of keys works on locally, meteor.com and onmodulus.net to make your development experience simpler. 
-> But, you should get a new pair of keys for a production deployment.
 
 ### Humans Only Mode
 

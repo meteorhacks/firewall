@@ -1,18 +1,18 @@
 Package.describe({
-  "summary": 'Sikka - A Firewall for Meteor Apps',
-  "name": "meteorhacks:sikka",
-  "version": "1.0.1",
-  "git": "https://github.com/meteorhacks/sikka.git",
+  'summary': 'Sikka-CM - A Community Maintained Firewall for Meteor Apps',
+  'name': 'xunga:sikka-cm',
+  'version': '1.0.1',
+  'git': 'https://github.com/meteorhacks/sikka.git'
 });
 
 Npm.depends({
-  "request": "2.53.0",
-  "cookies": "0.5.0"
+  'request': '2.53.0',
+  'cookies': '0.5.0'
 });
 
 Package.onUse(function (api, where) {
   configure(api);
-  api.export('Sikka', 'server')
+  api.export('Sikka', 'server');
 });
 
 Package.onTest(function (api, where) {
@@ -30,10 +30,11 @@ Package.onTest(function (api, where) {
 });
 
 function configure(api) {
-  api.versionsFrom("METEOR@0.9.2");
+  api.versionsFrom('METEOR@0.9.2');
   api.use([
     'mongo',
     'underscore',
+    'random',
     'meteorhacks:meteorx@1.3.1',
     'meteorhacks:picker@1.0.2',
     'chuangbo:cookie@1.1.0'
